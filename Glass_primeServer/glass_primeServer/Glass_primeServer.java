@@ -5,9 +5,13 @@
 
 package glass_primeServer;
 
-import java.io.*;
-import java.net.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Date;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
