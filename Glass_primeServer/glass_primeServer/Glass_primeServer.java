@@ -25,40 +25,40 @@ public class Glass_primeServer extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		
+
 		// create server output for messages
 		TextArea output = new TextArea();
-		
+
 		// create GUI
 		Scene scene = new Scene(new ScrollPane(output), 450, 200);
 		primaryStage.setTitle("Prime Server"); // set window title
 		primaryStage.setScene(scene);
 		primaryStage.show(); // start the GUI
-		
+
 		// kill the JVM/server when JavaFX window is closed
 		primaryStage.setOnCloseRequest(x -> System.exit(0));
-		
-		// TODO use following logic and a client server handshake to find free port
-			// ie, server finds first free port after 8000, if it finds 8001 it waits there
-			// client starts looking for server at port 8000, if it finds server there it sends a message
-			// can be anything, some string, and then waits for proper response
-			// if reposnse is not received, try next port in range
-		
-//		for (int port : FREE_PORT_RANGE) {
-//		    try (ServerSocket serverSocket = new ServerSocket(port)) {
-//		        assertThat(serverSocket).isNotNull();
-//		        assertThat(serverSocket.getLocalPort()).isEqualTo(port);
-//		        return;
-//		    } catch (IOException e) {
-//		        assertThat(e).hasMessageContaining("Address already in use");
-//		    }
-//		}
-//		fail("No free port in the range found");
 
-		
+		// TODO use following logic and a client server handshake to find free port
+		// ie, server finds first free port after 8000, if it finds 8001 it waits there
+		// client starts looking for server at port 8000, if it finds server there it sends a message
+		// can be anything, some string, and then waits for proper response
+		// if reposnse is not received, try next port in range
+
+		//		for (int port : FREE_PORT_RANGE) {
+		//		    try (ServerSocket serverSocket = new ServerSocket(port)) {
+		//		        assertThat(serverSocket).isNotNull();
+		//		        assertThat(serverSocket.getLocalPort()).isEqualTo(port);
+		//		        return;
+		//		    } catch (IOException e) {
+		//		        assertThat(e).hasMessageContaining("Address already in use");
+		//		    }
+		//		}
+		//		fail("No free port in the range found");
+
+
 		new Thread( () -> {
 			try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-				
+
 				Platform.runLater(() ->	output.appendText("Prime Server started - " + new Date() + '\n'));
 
 				// listen for client
