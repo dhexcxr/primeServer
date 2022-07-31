@@ -20,9 +20,9 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 public class Glass_primeServer extends Application {
-	
-	static final int PORT = 8000;
-	
+
+	private static final int PORT = 8000;
+
 	@Override
 	public void start(Stage primaryStage) {
 		
