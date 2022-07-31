@@ -72,14 +72,14 @@ public class Glass_primeServer extends Application {
 					int input = inputFromClient.readInt();
 
 					// check input for prime
-						// TODO check for prime
+					boolean result = isPrime(input);
 
 					// send results to client
-					outputToClient.writeBoolean(false);		// TODO set calculated output
+					outputToClient.writeBoolean(result);
 
 					Platform.runLater(() -> {
 						output.appendText("Input from client - " + input + '\n');
-						output.appendText("Input is prime -  " + false + '\n');		// TODO set calculated output
+						output.appendText("Input is prime -  " + result + '\n');		// TODO set calculated output
 					});
 				}
 			}
@@ -87,6 +87,25 @@ public class Glass_primeServer extends Application {
 				ex.printStackTrace();
 			}
 		}).start();
+	}
+
+	private static boolean isPrime(int n)
+	{
+		// check for simple primes
+		if (n <= 1)
+			return false;
+		if (n <= 3)
+			return true;
+
+		// check for other simple primes
+		if (n % 2 == 0 || n % 3 == 0)
+			return false;
+
+		for (int i = 5; i * i <= n; i = i + 6)
+			if (n % i == 0 || n % (i + 2) == 0)
+				return false;
+
+		return true;
 	}
 
 	public static void main(String[] args) {
