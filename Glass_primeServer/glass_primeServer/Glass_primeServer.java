@@ -69,7 +69,7 @@ public class Glass_primeServer extends Application {
 				DataOutputStream outputToClient = new DataOutputStream(socket.getOutputStream());
 
 				while (true) {
-					int input = inputFromClient.readInt();
+					long input = inputFromClient.readLong();
 
 					// check input for prime
 					boolean result = isPrime(input);
@@ -89,7 +89,7 @@ public class Glass_primeServer extends Application {
 		}).start();
 	}
 
-	private static boolean isPrime(int n)
+	private static boolean isPrime(long n)
 	{
 		// check for simple primes
 		if (n <= 1)
